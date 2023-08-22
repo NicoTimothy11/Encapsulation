@@ -38,11 +38,28 @@ public:
 	string getWeapon() {
 		return weapon;
 	}
+
+	void Attack() {
+		cout << "**Slash**" << endl;
+	}
+
+	void Defend(int Value) {
+		if(Value > 0 && Value < armor) {
+			armor -= Value;
+		}
+		else {
+			cout << "No More Armor Left" << endl;
+			health -= Value;
+		}
+	}
 };
 
 int main() {
 	GameSprite Dino(3, 6, "jaws");
-	cout << "Health: " << Dino.getHealth();
+	cout << "Health: " << Dino.getHealth() << endl;
+	Dino.Attack();
+	Dino.Defend(5);
+	cout << "Armor: " << Dino.getArmor() << endl;
 	return 0;
 }
 
