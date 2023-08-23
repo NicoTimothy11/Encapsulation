@@ -43,23 +43,41 @@ public:
 		cout << "Attacks!" << endl;
 	}
 
-	void Defend(int value) {
-		if(value > 0 && value <= armor) {
-			armor -= value;
+	void Defend() {
+		if(armor > 0) {
+			armor -= 1;
 		}
+
 		else if(armor == 0) {
-			health -= value;
+			if(health > 0) {
+				health -= 1;
+			}
+		}
+	}
+
+	void Check() {
+		if(armor <= 0  && health <= 0) {
+			cout << "Dead Bull" << endl;
+		}
+		else {
+			cout << "Alive" << endl;
 		}
 	}
 };
 
 int main() {
-	GameSprite Dino(3, 6, "jaws");
+	GameSprite Dino(3, 3, "jaws");
 	cout << "Health: " << Dino.getHealth() << endl;
-	Dino.Defend(6);
 	cout << "Armor: " << Dino.getArmor() << endl;
+	Dino.Defend();
+	Dino.Defend();
+	Dino.Defend();
+	Dino.Defend();
+	Dino.Defend();
+	Dino.Defend();
 	cout << "Remaining Armor: " << Dino.getArmor() << endl;
 	cout << "Remaining Health: " << Dino.getHealth() << endl;
+	Dino.Check();
 	return 0;
 }
 
