@@ -40,27 +40,12 @@ public:
 	}
 
 	void Attack() {
-		cout << " **Slash** " << endl;
+		cout << "Attacks!" << endl;
 	}
 
-	void Defend(int Value) {
-		if(Value > 0 && Value < armor) {
-			cout << "-/-/-/-/" << endl;
-			armor -= Value;
-		}
-		else {
-			cout << "No More Armor Left" << endl;
-			health -= Value;
-		}
-	}
-
-	void HealthCheck() {
-		if(health == 0) {
-			cout << "Dead" << endl;
-		}
-		else {
-			cout << "Alive" << endl;
-			cout << "Remaining Health: " << getHealth() << endl;
+	void Defend(int value) {
+		if(value > 0 && value <= armor) {
+			armor -= value;
 		}
 	}
 };
@@ -68,10 +53,10 @@ public:
 int main() {
 	GameSprite Dino(3, 6, "jaws");
 	cout << "Health: " << Dino.getHealth() << endl;
-	Dino.Attack();
-	Dino.Defend(8);
+	Dino.Defend(5);
 	cout << "Armor: " << Dino.getArmor() << endl;
-	Dino.HealthCheck();
+	cout << "Remaining Health: " << Dino.getHealth() << endl;
+	cout << "Remaining Armor: " << Dino.getArmor() << endl;
 	return 0;
 }
 
